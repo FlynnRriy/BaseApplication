@@ -2,7 +2,6 @@ package com.baseapplication.presenter;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import com.baseapplication.contract.MyContract;
 import com.baseapplication.model.LoginModelImpl;
 import com.baseapplication.network.listener.LoginListener;
@@ -17,6 +16,7 @@ public class LoginPresenterImpl extends MyContract.LoginPresenter {
     public void login() {
         final MyContract.ILoginView mView = getView();
         if (mView == null) {
+            MyLog.e(TAG,"请求失败 mView==null");
             return;
         }
         mView.showLoading();
