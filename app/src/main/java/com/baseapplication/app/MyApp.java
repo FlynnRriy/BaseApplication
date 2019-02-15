@@ -2,14 +2,24 @@ package com.baseapplication.app;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.view.View;
+
+import com.baseapplication.service.MyNetStateService;
+import com.baseapplication.utils.MyLog;
+import com.baseapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //切记不要用 instance = new MyApp() 一类的赋值去获取实例，这样你得到的只是一个普通的 Java 类，不会具备任何 Application 的功能！
 public class MyApp extends Application {
+    private static final String TAG = "MyApp";
     private static MyApp instance;
-
     public static List<Activity> activities;
 
     public static MyApp getInstance() {
@@ -18,10 +28,16 @@ public class MyApp extends Application {
 
     @Override
     public void onCreate() {
+        MyLog.d(TAG,"MyApp onCreate");
         super.onCreate();
         instance = this;
     }
 
+    @Override
+    public void onTerminate() {
+        MyLog.d(TAG,"MyApp onTerminate");
+        super.onTerminate();
+    }
     //-----------------------------------用于存放我们所有activity的数组--start--------------------
     //向集合中添加一个activity
     public static void addActivity(Activity activity){
