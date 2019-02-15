@@ -3,7 +3,7 @@ package com.baseapplication.contract;
 import com.baseapplication.baseMVP.BasePresenter;
 import com.baseapplication.baseMVP.IBaseModel;
 import com.baseapplication.baseMVP.IBaseView;
-import com.baseapplication.network.listener.LoginListener;
+import com.baseapplication.listener.LoginListener;
 
 //通过一个协议接口MyContract来定义ILoginView和ILoginModel，
 // 这样也确定了LoginPresenter的IModel和IView的具体类型。
@@ -20,7 +20,7 @@ public interface MyContract {
 
     //定义modelImpl要实现的方法
     interface ILoginModel extends IBaseModel {
-        void requestLogin(String userName, String userPassword, LoginListener loginListener);
+        void requestLogin(String host, String json, LoginListener loginListener);
     }
 
     //数据请求和activity的交互（activity和LoginPresenterImpl共同的方法要在此定义）
