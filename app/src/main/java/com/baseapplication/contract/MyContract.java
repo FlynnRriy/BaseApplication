@@ -17,12 +17,10 @@ public interface MyContract {
         //activity获取数据要调用的方法
         public abstract void login();
     }
-
     //定义modelImpl要实现的方法
     interface ILoginModel extends IBaseModel {
         void requestLogin(String host, String json, LoginListener loginListener);
     }
-
     //数据请求和activity的交互（activity和LoginPresenterImpl共同的方法要在此定义）
     interface ILoginView extends IBaseView {
         void showLoading();//去请求
@@ -32,4 +30,43 @@ public interface MyContract {
         String getUserName();
         String getUserPassword();
     }
+
+    //////FirstFragment
+    abstract class FirstFragmentPresenter extends BasePresenter<IFirstFragmentModel, IFirstFragmentView> {
+        //activity获取数据要调用的方法
+        public abstract void login();
+    }
+
+    //定义modelImpl要实现的方法
+    interface IFirstFragmentModel extends IBaseModel {
+        void requestLogin(String host, String json, LoginListener loginListener);
+    }
+
+    //数据请求和activity的交互（activity和LoginPresenterImpl共同的方法要在此定义）
+    interface IFirstFragmentView extends IBaseView {
+        void showLoading();//去请求
+        void hideLoading();//拿到结果
+        void showLoginSuccess();
+        void showLoginFailed();
+        String getUserName();
+        String getUserPassword();
+    }
+
+    ///////////////////////SecondFragment
+    abstract class SecondFragmentPresenter extends BasePresenter<ISecondFragmentModel, ISecondFragmentView> {
+        //activity获取数据要调用的方法
+        public abstract void login();
+    }
+
+    //定义modelImpl要实现的方法
+    interface ISecondFragmentModel extends IBaseModel {
+        void requestLogin(String host, String json, LoginListener loginListener);
+    }
+
+    //数据请求和activity的交互（activity和LoginPresenterImpl共同的方法要在此定义）
+    interface ISecondFragmentView extends IBaseView {
+        void showLoading();//去请求
+        void hideLoading();//拿到结果
+    }
+
 }

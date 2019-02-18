@@ -18,6 +18,7 @@ import com.baseapplication.presenter.LoginPresenterImpl;
 import com.baseapplication.service.MyNetStateService;
 import com.baseapplication.utils.MyLog;
 import com.baseapplication.utils.ToastUtil;
+import com.baseapplication.view.fragment.FirstFragment;
 
 import java.lang.ref.WeakReference;
 import java.util.Timer;
@@ -36,20 +37,28 @@ public class MainActivity extends BaseMvpActivity<MyContract.LoginPresenter> imp
         handler = new MyHandler(this);
         //绑定网络监听service
         bindNetStateService();
-        TimerTask t = new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        getNetState();
-                    }
-                });
+//        TimerTask t = new TimerTask() {
+//            @Override
+//            public void run() {
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        getNetState();
+//                    }
+//                });
+//
+//            }
+//        };
+//        Timer timer = new Timer();
+//        timer.schedule(t,3000);
 
-            }
-        };
-        Timer timer = new Timer();
-        timer.schedule(t,3000);
+        initView();
+    }
+    private void initView(){
+        FirstFragment firstFragment = new FirstFragment();
+        getFragmentManager().beginTransaction()
+                .add(R.id.fl_main_fragment_container,firstFragment)
+                .commit();
     }
 
     @Override

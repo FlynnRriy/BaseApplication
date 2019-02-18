@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.baseapplication"
-        minSdkVersion 14
+        minSdkVersion 15 //Fragment 的getUserVisibleHint()需要15 ；14是4.0；15是4.0.3
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
