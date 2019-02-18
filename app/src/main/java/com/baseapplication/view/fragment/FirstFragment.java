@@ -48,7 +48,7 @@ public class FirstFragment extends BaseMvpFragment <MyContract.FirstFragmentPres
             @Override
             public void onClick(View view) {
                 getFragmentManager().beginTransaction()
-                        .add(R.id.fl_main_fragment_container,secondFragment)
+                        .replace(R.id.fl_main_fragment_container,secondFragment)
 //                        .addToBackStack(null)//返回的话，会先返回first。此方法现实中一般用不到
                         .commit();
 
@@ -68,6 +68,7 @@ public class FirstFragment extends BaseMvpFragment <MyContract.FirstFragmentPres
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {//每次显示时会调用
         super.setUserVisibleHint(isVisibleToUser);
+        MyLog.d(TAG,"asdasdasd");
         if(isVisibleToUser){
             mPresenter.login();//请求数据
             mIsInitData = true;
